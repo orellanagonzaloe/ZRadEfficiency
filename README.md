@@ -17,7 +17,7 @@ Run the `RadiativeZ` tool including this configuration in the AnalysisConfig.cxx
 
 ## Loop
 
-Creates a rootfile with all information in `output` directory. In `ZRadEfficiency.yaml` is the default configuration. You need to indicate the path to the ntuples from `RadiativeZ`. Wildcards and multiple path are possible (if you want to include both electron and muon decays together). Also year must be indicated to choose the correct trigger list. Example:
+Creates a rootfile with all information in `output` directory. In `ZRadEfficiency.yaml` is the default configuration, you can change it at your wish. You need to indicate the path to the ntuples from `RadiativeZ`. Wildcards and multiple path are possible (if you want to include both electron and muon decays together). Also year must be indicated to choose the correct trigger list. Example:
 
 	python ZRadEfficiency.py --loop --inputFiles /path/to/data15_EGAM3/*/* /path/to/data15_EGAM4/*/* --year 2015
 
