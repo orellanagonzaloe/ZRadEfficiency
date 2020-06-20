@@ -1,0 +1,65 @@
+
+
+trigger_list : 
+
+  '2015' : [
+   'HLT_g10_loose',
+   'HLT_g15_loose',
+   'HLT_g20_loose',
+   'HLT_g20_tight',
+   'HLT_g25_loose',
+   'HLT_g25_loose_L1EM15',
+   'HLT_g35_loose',
+   'HLT_g35_loose_L1EM15',
+  ]
+
+  '2016' : [
+   'HLT_g10_loose',  
+   'HLT_g15_loose',
+   'HLT_g20_loose',
+   'HLT_g20_tight',
+   # 'HLT_g22_tight', # period D4 onwards: 302919-...
+   'HLT_g25_loose',
+   'HLT_g35_loose'
+  ]
+
+  '2017' : [
+   'HLT_g12_loose', 
+   'HLT_g15_loose_L1EM3',  
+   'HLT_g20_tight_icalovloose_L1EM15VHI',
+   'HLT_g22_tight_L1EM15VHI',
+   'HLT_g25_loose',
+   'HLT_g25_medium_L1EM20VH',
+   'HLT_g35_medium_L1EM20VH',
+   'HLT_g50_loose_L1EM20VH'
+  ]
+
+  '2018' : [
+   'HLT_g12_loose',
+   'HLT_g15_loose_L1EM3',
+   'HLT_g20_tight_icalovloose_L1EM15VHI',
+   'HLT_g22_tight_L1EM15VHI',
+   'HLT_g25_loose',
+   'HLT_g25_medium_L1EM20VH',
+   'HLT_g35_medium_L1EM20VH',
+   'HLT_g50_loose_L1EM20VH'
+  ]
+
+
+et_binning : [10000., 13000., 15000., 20000., 25000., 30000., 35000., 40000., 45000., 50000., 60000., 100000.] # in MeV, recommended to use values according to trigger thresholds
+eta_binning : [0., 0.6, 1.37, 1.52, 1.81, 2.37] # explicitly include crack bin
+
+ph_ISO : 'FixedCutTightCaloOnly' # FixedCutTightCaloOnly FixedCutTight FixedCutLoose
+
+
+# nominal and systematics
+
+ll_m_Max : [83000., 87000., 79000.]
+ll_m_Min : [40000., 36000., 44000.]
+
+llg_m_Max : [96000., 100000., 94000.]
+llg_m_Min : [86000., 82000., 88000.]
+
+l_ID : ['Medium', 'Tight', 'Loose']
+l_ISO : ['FCLoose', 'FCTight']
+
