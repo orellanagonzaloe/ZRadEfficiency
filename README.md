@@ -21,7 +21,7 @@ Creates a rootfile with all information in `output` directory. In `ZRadEfficienc
 
 	python ZRadEfficiency.py --loop --inputFiles /path/to/data15_EGAM3/*/* /path/to/data15_EGAM4/*/* --year 2015
 
-## EFf/SFs files
+## Eff/SFs files
 
 Only after the previous step was done for all year, and also for both Data and MC, you can produce the Eff/SFs files (`SFs` directory):
 
