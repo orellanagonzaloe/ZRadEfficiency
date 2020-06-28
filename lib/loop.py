@@ -110,22 +110,22 @@ def main(inputFiles, year):
 			ph_pdgid = getattr(chain, 'ph.truth_pdgId')
 
 		l1_ID = []
-		l1_ID.append(getattr(chain, 'l1.IDmedium'))
-		l1_ID.append(getattr(chain, 'l1.IDtight'))
-		# l1_ID.append(getattr(chain, 'l1.IDloose'))
+		l1_ID.append(getattr(chain, 'l1.medium_id'))
+		l1_ID.append(getattr(chain, 'l1.tight_id'))
+		# l1_ID.append(getattr(chain, 'l1.loose_id'))
 
 		l2_ID = []
-		l2_ID.append(getattr(chain, 'l2.IDmedium'))
-		l2_ID.append(getattr(chain, 'l2.IDtight'))
-		# l2_ID.append(getattr(chain, 'l2.IDloose'))
+		l2_ID.append(getattr(chain, 'l2.medium_id'))
+		l2_ID.append(getattr(chain, 'l2.tight_id'))
+		# l2_ID.append(getattr(chain, 'l2.loose_id'))
 
 		l1_ISO = []
-		l1_ISO.append(getattr(chain, 'l1.ISOloose'))
-		l1_ISO.append(getattr(chain, 'l1.ISOtight'))
+		l1_ISO.append(getattr(chain, 'l1.isoloose'))
+		l1_ISO.append(getattr(chain, 'l1.isotight'))
 
 		l2_ISO = []
-		l2_ISO.append(getattr(chain, 'l2.ISOloose'))
-		l2_ISO.append(getattr(chain, 'l2.ISOtight'))
+		l2_ISO.append(getattr(chain, 'l2.isoloose'))
+		l2_ISO.append(getattr(chain, 'l2.isotight'))
 
 
 		for s in syst_list:
