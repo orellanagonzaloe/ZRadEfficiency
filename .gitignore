@@ -1,10 +1,5 @@
-*
-!ZRadEfficiency.py
-!ZRadEfficiency.yaml
-!lib
-!lib/*.py
-!ForZRadProj
-!ForZRadProj/*.py
-!ForZRadProj/*.yaml
-!README.md
-!.gitignore
+output/*
+SFs/*
+*.sh
+lib/*.pyc
+.asetup.save

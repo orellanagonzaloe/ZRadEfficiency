@@ -13,7 +13,7 @@ ROOT.gROOT.SetBatch(True)
 from ROOT import *
 
 
-with open('config.yaml', 'r') as f:
+with open('ZRadEfficiency.yaml', 'r') as f:
 	cfg = yaml.safe_load(f)
 
 run_range = {
@@ -21,6 +21,7 @@ run_range = {
 	'2016' : '297730_311481',
 	'2017' : '325713_340453',
 	'2018' : '348885_364292',
+	'2021' : 'XXXXXX_XXXXXX',
 }
 
 
@@ -48,8 +49,8 @@ def main(SFsDir, outputPlotDir):
 		h_tmp_err = h_tmp.Clone()
 		h_tmp_err.Reset()
 
-		for i in xrange(1, h_tmp.GetNbinsX()+1):
-			for j in xrange(1, h_tmp.GetNbinsY()+1):
+		for i in range(1, h_tmp.GetNbinsX()+1):
+			for j in range(1, h_tmp.GetNbinsY()+1):
 
 				err = h_tmp.GetBinError(i, j)
 				h_tmp_err.SetBinContent(i, j, err)
@@ -122,7 +123,7 @@ def plot_SF(h_SF, h_SF_err, file, outputPlotDir):
 
 	# Vertical lines
 	sf_Yline = []
-	for i in xrange(len(cfg['et_binning'])-1):
+	for i in range(len(cfg['et_binning'])-1):
 
 		sf_Yline.append(ROOT.TLine(cfg['et_binning'][i], cfg['eta_binning'][0], cfg['et_binning'][i], cfg['eta_binning'][len(cfg['eta_binning'])-1]))
 		sf_Yline[i].SetLineWidth(1)
@@ -131,7 +132,7 @@ def plot_SF(h_SF, h_SF_err, file, outputPlotDir):
 	
 	# Horizontal lines
 	sf_Xline = []
-	for i in xrange(len(cfg['eta_binning'])):
+	for i in range(len(cfg['eta_binning'])):
 
 		sf_Xline.append(ROOT.TLine(cfg['et_binning'][0], cfg['eta_binning'][i], cfg['et_binning'][len(cfg['et_binning'])-1], cfg['eta_binning'][i]))
 		sf_Xline[i].SetLineWidth(1)
@@ -142,18 +143,18 @@ def plot_SF(h_SF, h_SF_err, file, outputPlotDir):
 
 	# Horizontal axis
 	sf_Yaxis = []
-	for i in xrange(len(cfg['et_binning'])-1):
+	for i in range(len(cfg['et_binning'])-1):
 
-		sf_Yaxis.append(ROOT.TGaxis(cfg['et_binning'][i], cfg['eta_binning'][0], cfg['et_binning'][i+1], cfg['eta_binning'][0], cfg['et_binning'][i]/1000, cfg['et_binning'][i+1]/1000, 001, ''))
+		sf_Yaxis.append(ROOT.TGaxis(cfg['et_binning'][i], cfg['eta_binning'][0], cfg['et_binning'][i+1], cfg['eta_binning'][0], cfg['et_binning'][i]/1000, cfg['et_binning'][i+1]/1000, 0o1, ''))
 		sf_Yaxis[i].SetTextFont(42)
 		sf_Yaxis[i].SetLabelSize(0.03)
 		sf_Yaxis[i].Draw()
 	
 	# Vertical axis
 	sf_Xaxis = []
-	for i in xrange(len(cfg['eta_binning'])-1):
+	for i in range(len(cfg['eta_binning'])-1):
 
-		sf_Xaxis.append(ROOT.TGaxis(cfg['et_binning'][0], cfg['eta_binning'][i], cfg['et_binning'][0], cfg['eta_binning'][i+1], cfg['eta_binning'][i], cfg['eta_binning'][i+1], 001, ''))
+		sf_Xaxis.append(ROOT.TGaxis(cfg['et_binning'][0], cfg['eta_binning'][i], cfg['et_binning'][0], cfg['eta_binning'][i+1], cfg['eta_binning'][i], cfg['eta_binning'][i+1], 0o1, ''))
 		sf_Xaxis[i].SetTextFont(42)
 		sf_Xaxis[i].SetLabelSize(0.03)
 		sf_Xaxis[i].Draw()

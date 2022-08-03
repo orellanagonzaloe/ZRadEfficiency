@@ -3,6 +3,7 @@
 import os
 import argparse
 import array
+import yaml
 
 def check_args(args):
 
@@ -16,6 +17,9 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--loop', dest='loop', action='store_true', default=False)
 parser.add_argument('--inputFiles', dest='inputFiles', default=[], nargs='+')
 parser.add_argument('--year', dest='year', default=None)
+parser.add_argument('--nevents', dest='nevents', default=None)
+parser.add_argument('--config', dest='config', default='ZRadEfficiency.yaml')
+parser.add_argument('--outputDir', dest='outputDir', type = str, default='output')
 
 parser.add_argument('--createSF', dest='createSF', action='store_true', default=False)
 
@@ -27,35 +31,26 @@ args = parser.parse_args()
 
 check_args(args)
 
-inputFiles = args.inputFiles
-year = args.year
+with open(args.config, 'r') as f:
+	cfg = yaml.safe_load(f)
 
-loop = args.loop
-createSF = args.createSF
-plots = args.plots
+cfg['inputFiles'] = args.inputFiles
+cfg['year'] = args.year
+cfg['config'] = args.config
+cfg['outputDir'] = args.outputDir
+cfg['nevents'] = args.nevents
+cfg['SFsDir'] = args.SFsDir
+cfg['outputPlotDir'] = args.outputPlotDir
 
-SFsDir = args.SFsDir
-outputPlotDir = args.outputPlotDir
-
-for i in inputFiles:
-	if i[-1] != '/':
-		i += '/'
-
-if SFsDir is not None and SFsDir[-1] != '/':
-	SFsDir += '/'
-if outputPlotDir is not None and outputPlotDir[-1] != '/':
-	outputPlotDir += '/'
-
-
-if loop:
-	import lib.loop as lp
-	lp.main(inputFiles, year)
-elif createSF:
-	import lib.createSF as sf
+if args.loop:
+	import loop as lp
+	lp.main(cfg)
+elif args.createSF:
+	import createSF as sf
 	sf.main()
-elif plots:
-	import lib.plots as pl
-	pl.main(SFsDir, outputPlotDir)
+elif args.plots:
+	import plots as pl
+	pl.main(cfg)
 
 
 
